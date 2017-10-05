@@ -15,7 +15,8 @@ require_relative '../models/address_book'
      puts "3 - Search for an entry"
      puts "4 - Import entries from a CSV"
      puts "5 - View Entry Number n"
-     puts "6 - Exit"
+     puts "6 - Demolish"
+     puts "7 - Exit"
 
 
      print "Enter your selection: "
@@ -47,8 +48,11 @@ require_relative '../models/address_book'
               view_entry_by_number
               main_menu
             when 6
+              system "clear"
+              demolish
+              main_menu
+            when 7
               puts "Good-bye!"
-              # #8
               exit(0)
             else
               system "clear"
@@ -221,4 +225,13 @@ require_relative '../models/address_book'
               search_submenu(entry)
           end
         end
+
+      def demolish
+        print "Are you sure you want to delete all entries? (Y/N)\n"
+        choice = gets.chomp
+        choice.downcase
+        if choice == "y" || choice == "yes"
+          address_book.demolish_entries
+        end
+      end
     end

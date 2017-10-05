@@ -75,5 +75,8 @@ class AddressBook
     return nil
 
   end
+  def demolish_entries
+    entries.clear
+  end
 
 end
